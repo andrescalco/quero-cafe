@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var path = require('path');
+var port = process.env.PORT || 8080;
 
 // APP CONFIG
 app.set('views', __dirname + '/views');
@@ -25,6 +26,6 @@ io.sockets.on('connection', function (client) {
 	});
 });
 
-server.listen(3000, function(){
+server.listen(port, function(){
 	console.log("Rodando o server!");
 });
