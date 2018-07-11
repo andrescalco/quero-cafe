@@ -3,7 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var path = require('path');
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 
 // APP CONFIG
 app.set('views', __dirname + '/views');
