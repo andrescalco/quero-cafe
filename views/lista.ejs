@@ -1,0 +1,16 @@
+<html>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+	<script>
+	var socket = io('http://localhost:3000');
+	socket.on('listNames', function (msg) {
+		var chat = document.getElementById('chat');
+		chat.innerHTML += msg;
+	});
+	</script>
+	<section>
+		Nomes
+		<pre id="chat"></pre>
+	</section>
+</body>
+</html>

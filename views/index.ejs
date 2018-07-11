@@ -1,0 +1,29 @@
+<html>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+	<link rel="stylesheet" href="/css/style.css">
+	<section>
+		<img src="img/cafe.gif" alt="" class="cafe-gif" />
+		<form class="name-form" action="" onsubmit="sendName(event)">
+			<input type="text" id="msg" placeholder="Seu Nome">
+			<button>Enviar</button>
+		</form>
+		<ul class="names"></ul>
+	</section>
+	<script>
+		var socket = io('http://localhost:3000');
+		var sendName = function(e) {
+			e.preventDefault(e);
+			var msg = document.querySelector('#msg');
+			socket.emit('toServer', msg.value);
+			msg.value = "";
+		};
+
+		socket.on('listNames', function (msg) {
+			var names = document.querySelector('.names');
+			var item = `<li>${msg}</li>`;
+			names.innerHTML += item
+		});
+	</script>
+</body>
+</html>
