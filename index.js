@@ -12,11 +12,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES
 app.get('/', function (req, res) {
-	res.render('index');
-});
-
-app.get('/lista', function (req, res) {
-	res.render('lista');
+	res.render('index',{
+		port
+	});
 });
 
 io.sockets.on('connection', function (client) {
